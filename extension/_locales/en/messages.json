@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "Thunderbird Tray" },
+  "extensionName": { "message": "Tray for Thunderbird" },
   "extensionDescription": {
     "message": "Keeps Thunderbird running in the system tray on Linux, with the unread count and quick actions."
   },

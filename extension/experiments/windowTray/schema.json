@@ -84,7 +84,7 @@
           {
             "name": "command",
             "type": "string",
-            "enum": ["getMail", "addressBook", "calendar", "tasks", "toggleOffline", "quit"]
+            "enum": ["getMail", "toggleOffline", "quit"]
           }
         ]
       }

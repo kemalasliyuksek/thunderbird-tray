@@ -68,8 +68,8 @@ pnpm test && pnpm build                                  # dist/thunderbird-tray
 (cd host && uv run pytest -q && rm -rf dist && uv build) # host/dist/*.whl and *.tar.gz
 mkdir -p release && cp dist/*.xpi host/dist/*.whl host/dist/*.tar.gz release/
 (cd release && sha256sum * > SHA256SUMS)
-git tag -s v<version> -m "Thunderbird Tray <version>" && git push origin v<version>
-gh release create v<version> release/* --title "Thunderbird Tray <version>" --notes-file <notes>
+git tag -s v<version> -m "Tray for Thunderbird <version>" && git push origin v<version>
+gh release create v<version> release/* --title "Tray for Thunderbird <version>" --notes-file <notes>
 ```
 
 The `.xpi` is reproducible, so anyone can rebuild it from the tag and compare checksums.

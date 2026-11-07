@@ -20,7 +20,7 @@ def test_manifest_allows_only_this_add_on(tmp_path):
     manifest = build_manifest(tmp_path / "host")
     assert manifest == {
         "name": HOST_NAME,
-        "description": "Thunderbird Tray: system tray icon for Thunderbird",
+        "description": "Tray for Thunderbird: system tray icon for Thunderbird",
         "path": str(tmp_path / "host"),
         "type": "stdio",
         "allowed_extensions": [EXTENSION_ID],

@@ -31,7 +31,7 @@ def _install(args: argparse.Namespace) -> int:
     target = write_manifest(args.manifest_dir, host)
     print(f"Registered the tray program with Thunderbird: {target}")
     print(f"It points to {host}.")
-    print("Restart Thunderbird if it is running, and install the Thunderbird Tray add-on.")
+    print("Restart Thunderbird if it is running, and install the Tray for Thunderbird add-on.")
     return 0
 
 

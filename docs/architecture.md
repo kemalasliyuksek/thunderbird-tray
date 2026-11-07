@@ -2,7 +2,7 @@
 
 Thunderbird can hide its window to the system tray only on Windows. The code for it lives in a native
 Windows service (`nsIMessengerWindowsIntegration`), so the "minimize to tray" options do nothing on Linux,
-and there is no tray icon. Thunderbird Tray adds both, in two parts:
+and there is no tray icon. Tray for Thunderbird adds both, in two parts:
 
 ```
 ┌──────────────────────── Thunderbird ────────────────────────┐        ┌──────── tray program ────────┐

@@ -10,6 +10,8 @@ const REFRESH_DELAY_MS = 300;
 /** Stop reading unread messages for the recent list after this many. */
 const MAX_SCANNED = 500;
 const DAY_MS = 24 * 60 * 60 * 1000;
+/** Thunderbird's built-in spaces, by tray command. */
+const SPACE_NAMES = Object.freeze({ addressBook: "addressbook", calendar: "calendar", tasks: "tasks" });
 
 let settings = { ...DEFAULT_SETTINGS };
 let windowState = { hidden: false, active: false, muted: false, offline: false };
@@ -89,10 +91,16 @@ async function runCommand({ command, messageId, value }) {
       break;
     case "addressBook":
     case "calendar":
-    case "tasks":
-      await browser.windowTray.runCommand(command);
+    case "tasks": {
+      const [space] = await browser.spaces.query({ isBuiltIn: true, name: SPACE_NAMES[command] });
+      if (!space) {
+        throw new Error(`Thunderbird has no ${SPACE_NAMES[command]} space`);
+      }
+      await browser.windowTray.show();
+      await browser.spaces.open(space.id);
       requestActivation();
       break;
+    }
     case "openMessage":
       if (!Number.isInteger(messageId)) {
         throw new Error("openMessage needs an integer messageId");
@@ -272,4 +280,4 @@ async function main() {
   host.start();
 }
 
-main().catch(error => console.error("Thunderbird Tray failed to start:", error));
+main().catch(error => console.error("Tray for Thunderbird failed to start:", error));

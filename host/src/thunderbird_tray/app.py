@@ -89,7 +89,7 @@ def main() -> int:
     # Thunderbird passes the manifest path and the add-on id as arguments.
     app = QApplication(sys.argv[:1])
     app.setApplicationName("thunderbird-tray")
-    app.setApplicationDisplayName("Thunderbird Tray")
+    app.setApplicationDisplayName("Tray for Thunderbird")
     app.setQuitOnLastWindowClosed(False)
 
     if not QSystemTrayIcon.isSystemTrayAvailable():

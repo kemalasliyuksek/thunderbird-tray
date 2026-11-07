@@ -1,4 +1,4 @@
-# Thunderbird Tray
+# Tray for Thunderbird
 
 System tray icon for Thunderbird on Linux: hides the window to the tray instead of quitting, shows the
 unread count and quick actions. Open source, MIT. Code, comments, docs and commits in English; the only

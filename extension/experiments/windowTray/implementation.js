@@ -19,7 +19,6 @@ const MAIN_WINDOW_URL = "chrome://messenger/content/messenger.xhtml";
 const MAIN_WINDOW_TYPE = "mail:3pane";
 const SHOW_ALERT_PREF = "mail.biff.show_alert";
 const OFFLINE_TOPIC = "network:offline-status-changed";
-const SPACES = { addressBook: "addressbook", calendar: "calendar", tasks: "tasks" };
 // A copy of the "start hidden" setting. Extension storage is not readable yet
 // when this experiment starts, early enough to hide the first window before
 // it is ever drawn.
@@ -294,15 +293,6 @@ class TrayController {
         }
         win.MsgGetMessagesForAllAuthenticatedAccounts();
         break;
-      case "addressBook":
-      case "calendar":
-      case "tasks": {
-        this.showWindow(win, { focus: true });
-        const toolbar = win.gSpacesToolbar;
-        const space = toolbar.spaces.find(s => s.name == SPACES[command]);
-        toolbar.openSpace(win.document.getElementById("tabmail"), space);
-        break;
-      }
       case "toggleOffline":
         win.MailOfflineMgr.toggleOfflineStatus();
         break;
@@ -339,10 +329,6 @@ var windowTray = class extends ExtensionCommon.ExtensionAPI {
       this.controller.startHidden();
     }
     this.controller.start();
-  }
-
-  static onUninstall() {
-    Services.prefs.clearUserPref(START_HIDDEN_PREF);
   }
 
   getAPI(context) {
@@ -394,5 +380,8 @@ var windowTray = class extends ExtensionCommon.ExtensionAPI {
     // Disabled, removed or updated: never leave a window hidden behind.
     this.controller.stop();
     this.controller = null;
+    // Experiments get no uninstall hook, so the copy of the setting goes here.
+    // After an update or when re-enabled, the background page writes it again.
+    Services.prefs.clearUserPref(START_HIDDEN_PREF);
   }
 };

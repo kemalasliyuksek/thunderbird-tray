@@ -1,4 +1,4 @@
-# Thunderbird Tray
+# Tray for Thunderbird
 
 [English](README.md)
 
@@ -6,8 +6,13 @@ Thunderbird'ü Linux'ta sistem tepsisinde çalışır tutar. Pencereyi kapattı�
 gizlenir; böylece yeni postalar gelmeye ve bildirimler görünmeye devam eder. Tepsi simgesi kaç iletinin
 beklediğini gösterir ve en sık yaptığınız işleri bir tık uzağa getirir.
 
-Thunderbird bu özelliği yalnızca Windows'ta sunuyor. Thunderbird Tray onu Linux'a, Wayland dahil,
+Thunderbird bu özelliği yalnızca Windows'ta sunuyor. Tray for Thunderbird onu Linux'a, Wayland dahil,
 Thunderbird'ü X11'e zorlamadan getirir.
+
+<p>
+  <img src="docs/screenshots/menu.png" alt="Son okunmamış iletiler ve hızlı işlemlerle tepsi menüsü" height="420">
+  <img src="docs/screenshots/tooltip.png" alt="Okunmamış rozetli tepsi simgesi ve ipucu" height="160">
+</p>
 
 ## Özellikler
 
@@ -33,7 +38,7 @@ yalnızca onları geri getirecek tepsi simgesi varken gizlenir. Ayrıntılar
 
 ## Gereksinimler
 
-- Thunderbird 140 ya da üstü; dağıtımınızın paketi ya da thunderbird.net sürümü. 158 ile test edildi.
+- Thunderbird 140 ya da üstü; dağıtımınızın paketi ya da thunderbird.net sürümü. 140 ESR ve 158 ile test edildi.
   Flatpak ve Snap paketleri eklentilerin korumalı alan dışında program başlatmasına izin vermediği için
   tepsi programını çalıştıramaz.
 - StatusNotifierItem tepsisi olan bir masaüstü: KDE Plasma (6.8, Wayland üzerinde test edildi), AppIndicator
@@ -97,6 +102,8 @@ ekleyin.
 | Pencereyi kapatma | Tepsiye gizler. |
 
 Ayarlar menüde **Tepsi Ayarları…** altında ve Thunderbird'ün eklenti yöneticisinde.
+
+<img src="docs/screenshots/settings.png" alt="Eklentinin ayarları" width="560">
 
 ## Sorun giderme
 

@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "Thunderbird Tray" },
+  "extensionName": { "message": "Tray for Thunderbird" },
   "extensionDescription": {
     "message": "Thunderbird'ü Linux'ta sistem tepsisinde açık tutar; okunmamış sayısını ve hızlı işlemleri gösterir."
   },

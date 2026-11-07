@@ -28,7 +28,7 @@ def manifest_path(directory: Path) -> Path:
 def build_manifest(host_executable: Path) -> dict[str, Any]:
     return {
         "name": HOST_NAME,
-        "description": "Thunderbird Tray: system tray icon for Thunderbird",
+        "description": "Tray for Thunderbird: system tray icon for Thunderbird",
         "path": str(host_executable),
         "type": "stdio",
         "allowed_extensions": [EXTENSION_ID],

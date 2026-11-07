@@ -1,4 +1,4 @@
-# Thunderbird Tray
+# Tray for Thunderbird
 
 [Türkçe](README.tr.md)
 
@@ -6,8 +6,13 @@ Keeps Thunderbird running in the system tray on Linux. Close the window and Thun
 quitting, so new mail keeps arriving and notifications keep showing. The tray icon shows how much mail
 is waiting and puts the things you do most one click away.
 
-Thunderbird has this built in only on Windows. Thunderbird Tray brings it to Linux, Wayland included,
+Thunderbird has this built in only on Windows. Tray for Thunderbird brings it to Linux, Wayland included,
 without forcing Thunderbird onto X11.
+
+<p>
+  <img src="docs/screenshots/menu.png" alt="The tray menu with recent unread messages and quick actions" height="420">
+  <img src="docs/screenshots/tooltip.png" alt="The tray icon with its unread badge and tooltip" height="160">
+</p>
 
 ## Features
 
@@ -32,7 +37,7 @@ the details.
 
 ## Requirements
 
-- Thunderbird 140 or later, from your distribution or from thunderbird.net. Tested with 158.
+- Thunderbird 140 or later, from your distribution or from thunderbird.net. Tested with 140 ESR and 158.
   The Flatpak and Snap packages do not let add-ons start programs outside the sandbox, so they cannot
   run the tray program.
 - A desktop with a StatusNotifierItem tray: KDE Plasma (tested with 6.8 on Wayland), or GNOME with the
@@ -95,6 +100,8 @@ until it times out; add `StartupNotify=false` to the autostart entry to avoid th
 | Close the window | Hide to the tray. |
 
 The settings are in the menu under **Tray Settings…**, and in Thunderbird's add-on manager.
+
+<img src="docs/screenshots/settings.png" alt="The add-on's settings" width="560">
 
 ## Troubleshooting
 
