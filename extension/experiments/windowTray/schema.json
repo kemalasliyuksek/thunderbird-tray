@@ -1,0 +1,95 @@
+[
+  {
+    "namespace": "windowTray",
+    "description": "Keeps the main Thunderbird window alive while it is hidden, and runs commands on it.",
+    "types": [
+      {
+        "id": "Options",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether windows may be hidden at all. Only true while the tray icon is running, so that a hidden window can always be brought back."
+          },
+          "closeToTray": { "type": "boolean" },
+          "minimizeToTray": { "type": "boolean" }
+        }
+      },
+      {
+        "id": "State",
+        "type": "object",
+        "properties": {
+          "hidden": { "type": "boolean", "description": "True when every main window is hidden." },
+          "active": { "type": "boolean", "description": "True when a main window has the focus." },
+          "muted": { "type": "boolean", "description": "True when new mail alerts are turned off." },
+          "offline": { "type": "boolean" }
+        }
+      },
+      {
+        "id": "LaunchInfo",
+        "type": "object",
+        "properties": {
+          "executable": { "type": "string" },
+          "profileDir": { "type": "string" }
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "configure",
+        "type": "function",
+        "async": true,
+        "parameters": [{ "name": "options", "$ref": "Options" }]
+      },
+      {
+        "name": "getState",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "getLaunchInfo",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "hide",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "show",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setMuted",
+        "type": "function",
+        "async": true,
+        "parameters": [{ "name": "muted", "type": "boolean" }]
+      },
+      {
+        "name": "runCommand",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "command",
+            "type": "string",
+            "enum": ["getMail", "addressBook", "calendar", "tasks", "toggleOffline", "quit"]
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onStateChanged",
+        "type": "function",
+        "parameters": [{ "name": "state", "$ref": "State" }]
+      }
+    ]
+  }
+]

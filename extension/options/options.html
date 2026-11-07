@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="options.css" />
+    <script type="module" src="options.js"></script>
+  </head>
+  <body>
+    <section>
+      <h2 data-i18n="options_windowHeading"></h2>
+      <label class="row">
+        <input type="checkbox" name="closeToTray" />
+        <span data-i18n="options_closeToTray"></span>
+      </label>
+      <label class="row">
+        <input type="checkbox" name="minimizeToTray" />
+        <span data-i18n="options_minimizeToTray"></span>
+      </label>
+      <label class="row">
+        <input type="checkbox" name="startHidden" />
+        <span data-i18n="options_startHidden"></span>
+      </label>
+      <p class="hint" data-i18n="options_startHiddenHint"></p>
+    </section>
+
+    <section>
+      <h2 data-i18n="options_trayHeading"></h2>
+      <label class="field">
+        <span data-i18n="options_countMode"></span>
+        <select name="countMode">
+          <option value="inbox" data-i18n="options_countModeInbox"></option>
+          <option value="all" data-i18n="options_countModeAll"></option>
+        </select>
+      </label>
+      <label class="row">
+        <input type="checkbox" name="showBadge" />
+        <span data-i18n="options_showBadge"></span>
+      </label>
+      <label class="field">
+        <span data-i18n="options_recentCount"></span>
+        <input type="number" name="recentCount" min="0" max="15" step="1" />
+      </label>
+      <label class="field">
+        <span data-i18n="options_middleClick"></span>
+        <select name="middleClick">
+          <option value="compose" data-i18n="options_middleClickCompose"></option>
+          <option value="getMail" data-i18n="options_middleClickGetMail"></option>
+          <option value="none" data-i18n="options_middleClickNone"></option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2 data-i18n="options_statusHeading"></h2>
+      <p id="status" class="status"></p>
+    </section>
+  </body>
+</html>

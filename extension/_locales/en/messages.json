@@ -1,0 +1,50 @@
+{
+  "extensionName": { "message": "Thunderbird Tray" },
+  "extensionDescription": {
+    "message": "Keeps Thunderbird running in the system tray on Linux, with the unread count and quick actions."
+  },
+
+  "label_trayTitle": { "message": "Thunderbird" },
+  "label_unreadSummary": { "message": "{count} unread" },
+  "label_newSummary": { "message": "{count} new" },
+  "label_noUnread": { "message": "No unread messages" },
+  "label_quotaWarning": { "message": "{account}: mailbox {percent}% full" },
+  "label_offlineNotice": { "message": "Working offline" },
+  "label_mutedNotice": { "message": "New mail alerts are off" },
+  "label_menuShow": { "message": "Show Thunderbird" },
+  "label_menuHide": { "message": "Hide Thunderbird" },
+  "label_menuRecent": { "message": "Recent unread" },
+  "label_noSubject": { "message": "(no subject)" },
+  "label_menuCompose": { "message": "Write a Message" },
+  "label_menuGetMail": { "message": "Get New Messages" },
+  "label_menuAddressBook": { "message": "Address Book" },
+  "label_menuCalendar": { "message": "Calendar" },
+  "label_menuTasks": { "message": "Tasks" },
+  "label_menuMuted": { "message": "Do Not Disturb" },
+  "label_menuOffline": { "message": "Work Offline" },
+  "label_menuSettings": { "message": "Tray Settings…" },
+  "label_menuQuit": { "message": "Quit Thunderbird" },
+
+  "options_windowHeading": { "message": "Window" },
+  "options_closeToTray": { "message": "Hide to the tray when the window is closed" },
+  "options_minimizeToTray": { "message": "Hide to the tray when the window is minimized" },
+  "options_startHidden": { "message": "Start hidden in the tray" },
+  "options_startHiddenHint": {
+    "message": "The window may appear for a moment while Thunderbird starts."
+  },
+  "options_trayHeading": { "message": "Tray icon" },
+  "options_countMode": { "message": "Count unread messages in" },
+  "options_countModeInbox": { "message": "Inboxes" },
+  "options_countModeAll": { "message": "All folders except Junk, Trash, Sent, Drafts, Templates and Archives" },
+  "options_showBadge": { "message": "Show the unread count on the icon" },
+  "options_recentCount": { "message": "Recent unread messages in the menu" },
+  "options_middleClick": { "message": "Middle click" },
+  "options_middleClickCompose": { "message": "Write a message" },
+  "options_middleClickGetMail": { "message": "Get new messages" },
+  "options_middleClickNone": { "message": "Nothing" },
+  "options_statusHeading": { "message": "Status" },
+  "options_statusConnected": { "message": "The tray icon is running." },
+  "options_statusMissing": {
+    "message": "The tray program is not running, so windows are not hidden. Install it with \"thunderbird-tray install\"; see the README."
+  }
+}

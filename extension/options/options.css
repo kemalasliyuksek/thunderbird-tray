@@ -1,0 +1,57 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  font: menu;
+  margin: 0;
+  padding: 8px 4px 16px;
+}
+
+section + section {
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 1.1em;
+  margin: 0 0 8px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: minmax(12em, max-content) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.field select {
+  max-width: 100%;
+}
+
+.field input[type="number"] {
+  width: 5em;
+}
+
+.hint {
+  color: GrayText;
+  font-size: 0.9em;
+  margin: 2px 0 0 28px;
+}
+
+.status.missing {
+  color: #c5221f;
+}
+
+@media (prefers-color-scheme: dark) {
+  .status.missing {
+    color: #ff8a80;
+  }
+}

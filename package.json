@@ -1,0 +1,20 @@
+{
+  "name": "thunderbird-tray-extension",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tests and packaging for the Thunderbird Tray add-on",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/extension/",
+    "check": "node --check extension/background.js && node --check extension/options/options.js && node --check extension/experiments/windowTray/implementation.js",
+    "build": "python3 scripts/build-xpi.py"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.13.0",
+      "onFail": "download"
+    }
+  }
+}

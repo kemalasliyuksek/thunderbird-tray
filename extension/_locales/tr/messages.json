@@ -1,0 +1,50 @@
+{
+  "extensionName": { "message": "Thunderbird Tray" },
+  "extensionDescription": {
+    "message": "Thunderbird'ü Linux'ta sistem tepsisinde açık tutar; okunmamış sayısını ve hızlı işlemleri gösterir."
+  },
+
+  "label_trayTitle": { "message": "Thunderbird" },
+  "label_unreadSummary": { "message": "{count} okunmamış" },
+  "label_newSummary": { "message": "{count} yeni" },
+  "label_noUnread": { "message": "Okunmamış ileti yok" },
+  "label_quotaWarning": { "message": "{account}: posta kutusu %{percent} dolu" },
+  "label_offlineNotice": { "message": "Çevrimdışı çalışılıyor" },
+  "label_mutedNotice": { "message": "Yeni posta bildirimleri kapalı" },
+  "label_menuShow": { "message": "Thunderbird'ü Göster" },
+  "label_menuHide": { "message": "Thunderbird'ü Gizle" },
+  "label_menuRecent": { "message": "Son okunmamışlar" },
+  "label_noSubject": { "message": "(konu yok)" },
+  "label_menuCompose": { "message": "İleti Yaz" },
+  "label_menuGetMail": { "message": "Yeni İletileri Al" },
+  "label_menuAddressBook": { "message": "Adres Defteri" },
+  "label_menuCalendar": { "message": "Takvim" },
+  "label_menuTasks": { "message": "Görevler" },
+  "label_menuMuted": { "message": "Rahatsız Etme" },
+  "label_menuOffline": { "message": "Çevrimdışı Çalış" },
+  "label_menuSettings": { "message": "Tepsi Ayarları…" },
+  "label_menuQuit": { "message": "Thunderbird'den Çık" },
+
+  "options_windowHeading": { "message": "Pencere" },
+  "options_closeToTray": { "message": "Pencere kapatılınca tepsiye gizle" },
+  "options_minimizeToTray": { "message": "Pencere simge durumuna küçültülünce tepsiye gizle" },
+  "options_startHidden": { "message": "Tepside gizli başlat" },
+  "options_startHiddenHint": {
+    "message": "Thunderbird açılırken pencere bir anlığına görünebilir."
+  },
+  "options_trayHeading": { "message": "Tepsi simgesi" },
+  "options_countMode": { "message": "Okunmamışları say" },
+  "options_countModeInbox": { "message": "Gelen kutularında" },
+  "options_countModeAll": { "message": "Önemsiz, Çöp, Gönderilmiş, Taslaklar, Şablonlar ve Arşivler dışındaki tüm klasörlerde" },
+  "options_showBadge": { "message": "Okunmamış sayısını simgede göster" },
+  "options_recentCount": { "message": "Menüdeki son okunmamış ileti sayısı" },
+  "options_middleClick": { "message": "Orta tık" },
+  "options_middleClickCompose": { "message": "İleti yaz" },
+  "options_middleClickGetMail": { "message": "Yeni iletileri al" },
+  "options_middleClickNone": { "message": "Hiçbir şey" },
+  "options_statusHeading": { "message": "Durum" },
+  "options_statusConnected": { "message": "Tepsi simgesi çalışıyor." },
+  "options_statusMissing": {
+    "message": "Tepsi programı çalışmıyor, bu yüzden pencereler gizlenmiyor. \"thunderbird-tray install\" ile kurun; ayrıntılar README'de."
+  }
+}
