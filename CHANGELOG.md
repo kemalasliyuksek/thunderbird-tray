@@ -14,5 +14,5 @@ First release.
 - Tooltip with unread and new mail per account, mailbox quota warnings, and offline and alert status.
 - Menu with recent unread messages, write, get mail, address book, calendar, tasks, Do Not Disturb,
   Work Offline, settings and quit.
-- Optional start hidden in the tray.
+- Optional start hidden in the tray, without the window flashing on screen.
 - English and Turkish.

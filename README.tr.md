@@ -76,7 +76,9 @@ Kurulumu `thunderbird-tray status` denetler.
 Eklenti ayarlarında **Tepside gizli başlat**'ı açın, sonra Thunderbird'ü oturum açılışında başlatın. KDE
 Plasma'da: **Sistem Ayarları › Otomatik Başlat › Ekle… › Uygulama Ekle…** ve Thunderbird'ü seçin. Diğer
 masaüstlerinde Thunderbird'ün `.desktop` dosyasını `~/.config/autostart/` dizinine kopyalayın. Pencere
-gizlenmeden önce bir anlığına görünebilir.
+çizilmeden gizlendiği için ekranda bir an bile görünmez. Hiç pencere açılmadığından masaüstünün meşgul
+imleci zaman aşımına kadar döner; bunu önlemek için otomatik başlatma girdisine `StartupNotify=false`
+ekleyin.
 
 ## Kullanım
 

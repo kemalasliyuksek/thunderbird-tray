@@ -11,15 +11,39 @@ var { ExtensionCommon } = ChromeUtils.importESModule(
 var { ExtensionSupport } = ChromeUtils.importESModule(
   "resource:///modules/ExtensionSupport.sys.mjs"
 );
+var { setTimeout, clearTimeout } = ChromeUtils.importESModule(
+  "resource://gre/modules/Timer.sys.mjs"
+);
 
 const MAIN_WINDOW_URL = "chrome://messenger/content/messenger.xhtml";
 const MAIN_WINDOW_TYPE = "mail:3pane";
 const SHOW_ALERT_PREF = "mail.biff.show_alert";
 const OFFLINE_TOPIC = "network:offline-status-changed";
 const SPACES = { addressBook: "addressbook", calendar: "calendar", tasks: "tasks" };
+// A copy of the "start hidden" setting. Extension storage is not readable yet
+// when this experiment starts, early enough to hide the first window before
+// it is ever drawn.
+const START_HIDDEN_PREF = "extensions.thunderbird-tray.startHidden";
+// A window hidden at startup is shown again if the tray icon has not appeared
+// by then, so that a missing tray program never leaves Thunderbird invisible.
+const STARTUP_GRACE_MS = 20_000;
 
 function baseWindowOf(win) {
   return win.docShell.treeOwner.QueryInterface(Ci.nsIBaseWindow);
+}
+
+/**
+ * Thunderbird finishes starting up, add-on background pages included, after
+ * the first paint of its main window. A window hidden before it is drawn is
+ * never painted, so this starts that part right away, as Thunderbird's own
+ * start-in-tray does on Windows (gMailInit.onLoad in messenger.js). If these
+ * internals change, the startup grace period shows the window instead.
+ */
+function releaseDelayedStartup(win) {
+  const init = win.gMailInit;
+  if (init?._boundDelayedStartup && !init.delayedStartupFinished) {
+    init._delayedStartup();
+  }
 }
 
 class TrayController {
@@ -36,6 +60,8 @@ class TrayController {
     // deactivate events. Services.focus.activeWindow is not used: while a
     // deactivate event runs it still names the window that is losing focus.
     this.activeWindow = null;
+    this.hideAtStartup = false;
+    this.graceTimer = null;
     this.started = false;
   }
 
@@ -53,11 +79,28 @@ class TrayController {
     Services.obs.addObserver(this, OFFLINE_TOPIC);
   }
 
+  /**
+   * Hides the first main window as soon as it has loaded, before it is drawn.
+   * Called only when Thunderbird itself starts, not when the add-on does.
+   */
+  startHidden() {
+    this.hideAtStartup = true;
+    this.graceTimer = setTimeout(() => {
+      this.graceTimer = null;
+      this.hideAtStartup = false;
+      if (!this.options.enabled) {
+        this.showAll({ focus: false });
+      }
+    }, STARTUP_GRACE_MS);
+  }
+
   stop() {
     if (!this.started) {
       return;
     }
     this.started = false;
+    clearTimeout(this.graceTimer);
+    this.graceTimer = null;
     ExtensionSupport.unregisterWindowListener(this.id);
     Services.prefs.removeObserver(SHOW_ALERT_PREF, this);
     Services.obs.removeObserver(this, OFFLINE_TOPIC);
@@ -109,6 +152,21 @@ class TrayController {
     };
     if (Services.focus.activeWindow == win) {
       this.activeWindow = win;
+    }
+    if (this.hideAtStartup) {
+      this.hideAtStartup = false;
+      const hideBeforePaint = () => {
+        this.hideWindow(win);
+        releaseDelayedStartup(win);
+        // In case Thunderbird's own load handler had not run yet.
+        setTimeout(() => releaseDelayedStartup(win), 0);
+      };
+      if (win.document.readyState == "complete") {
+        hideBeforePaint();
+      } else {
+        // Hidden at "load", Gecko never maps the window at all.
+        win.addEventListener("load", hideBeforePaint, { once: true });
+      }
     }
     // Capture, so that this runs before Thunderbird's own close handlers.
     win.addEventListener("close", onClose, true);
@@ -175,7 +233,10 @@ class TrayController {
     }
   }
 
-  configure(options) {
+  configure({ startHidden, ...options }) {
+    if (typeof startHidden == "boolean") {
+      Services.prefs.setBoolPref(START_HIDDEN_PREF, startHidden);
+    }
     this.options = { ...this.options, ...options };
     if (!this.options.enabled) {
       // Without the tray icon there would be no way back to a hidden window.
@@ -255,12 +316,37 @@ class TrayController {
 }
 
 var windowTray = class extends ExtensionCommon.ExtensionAPI {
-  getAPI(context) {
+  ensureController() {
     if (!this.controller) {
-      this.controller = new TrayController(context.extension.id);
+      this.controller = new TrayController(this.extension.id);
       this.controller.start();
     }
-    const controller = this.controller;
+    return this.controller;
+  }
+
+  // Runs at add-on startup, well before the background page, because the
+  // manifest lists this API under "events": ["startup"].
+  onStartup() {
+    if (this.controller) {
+      return;
+    }
+    this.controller = new TrayController(this.extension.id);
+    if (
+      this.extension.startupReason == "APP_STARTUP" &&
+      Services.prefs.getBoolPref(START_HIDDEN_PREF, false)
+    ) {
+      // Before start(), which attaches to windows that are already open.
+      this.controller.startHidden();
+    }
+    this.controller.start();
+  }
+
+  static onUninstall() {
+    Services.prefs.clearUserPref(START_HIDDEN_PREF);
+  }
+
+  getAPI(context) {
+    const controller = this.ensureController();
 
     return {
       windowTray: {

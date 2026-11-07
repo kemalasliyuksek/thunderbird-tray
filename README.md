@@ -74,8 +74,9 @@ the details.
 
 Turn on **Start hidden in the tray** in the add-on's settings, then start Thunderbird at login. On
 KDE Plasma: **System Settings › Autostart › Add… › Add Application…** and pick Thunderbird. Elsewhere,
-copy Thunderbird's `.desktop` file to `~/.config/autostart/`. The window may appear for a moment
-before it hides.
+copy Thunderbird's `.desktop` file to `~/.config/autostart/`. The window is hidden before it is drawn,
+so it does not flash on the screen. Since no window appears, the desktop's busy cursor keeps spinning
+until it times out; add `StartupNotify=false` to the autostart entry to avoid that.
 
 ## Usage
 

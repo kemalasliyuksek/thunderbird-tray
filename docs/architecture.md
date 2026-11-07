@@ -30,6 +30,22 @@ the window leaves the screen, the taskbar and the window switcher, and Thunderbi
 Closing one of several main windows still closes it. Minimizing can hide the window too, through the
 `sizemodechange` event, when that option is on.
 
+### Starting hidden
+
+With "Start hidden in the tray" on, the window is hidden before it is ever drawn. The experiment is
+listed under `"events": ["startup"]` in the manifest, so Gecko loads it at add-on startup, about half a
+second before the background page and while the first main window is still loading. Extension storage
+cannot be read that early, so the setting is mirrored into the preference
+`extensions.thunderbird-tray.startHidden`. On `APP_STARTUP` only, not when the add-on is installed or
+enabled, the experiment hides the first main window at its `load` event; a window hidden then is never
+mapped by GTK.
+
+Thunderbird finishes starting up, add-on background pages included, after the first paint of its main
+window (`gMailInit._delayedStartup` on `MozAfterPaint`). A window that is never painted would stall it,
+so the experiment starts that step right away, as Thunderbird's own start-in-tray does on Windows. If
+the tray program has not connected 20 seconds later, the window is shown, so a missing tray program
+cannot leave Thunderbird invisible.
+
 ### Getting it back
 
 Thunderbird brings its main window forward by calling `window.focus()`, both when it is launched while

@@ -30,6 +30,7 @@
       "schema": "experiments/windowTray/schema.json",
       "parent": {
         "scopes": ["addon_parent"],
+        "events": ["startup"],
         "paths": [["windowTray"]],
         "script": "experiments/windowTray/implementation.js"
       }

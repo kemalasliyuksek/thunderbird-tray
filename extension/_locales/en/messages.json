@@ -30,7 +30,7 @@
   "options_minimizeToTray": { "message": "Hide to the tray when the window is minimized" },
   "options_startHidden": { "message": "Start hidden in the tray" },
   "options_startHiddenHint": {
-    "message": "The window may appear for a moment while Thunderbird starts."
+    "message": "Takes effect the next time Thunderbird starts."
   },
   "options_trayHeading": { "message": "Tray icon" },
   "options_countMode": { "message": "Count unread messages in" },

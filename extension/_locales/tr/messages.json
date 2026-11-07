@@ -30,7 +30,7 @@
   "options_minimizeToTray": { "message": "Pencere simge durumuna küçültülünce tepsiye gizle" },
   "options_startHidden": { "message": "Tepside gizli başlat" },
   "options_startHiddenHint": {
-    "message": "Thunderbird açılırken pencere bir anlığına görünebilir."
+    "message": "Thunderbird bir sonraki açılışında etkili olur."
   },
   "options_trayHeading": { "message": "Tepsi simgesi" },
   "options_countMode": { "message": "Okunmamışları say" },

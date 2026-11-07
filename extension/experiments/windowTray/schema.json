@@ -12,7 +12,12 @@
             "description": "Whether windows may be hidden at all. Only true while the tray icon is running, so that a hidden window can always be brought back."
           },
           "closeToTray": { "type": "boolean" },
-          "minimizeToTray": { "type": "boolean" }
+          "minimizeToTray": { "type": "boolean" },
+          "startHidden": {
+            "type": "boolean",
+            "optional": true,
+            "description": "Hide the first window when Thunderbird starts. Stored in a preference, which the experiment can read before the background page runs."
+          }
         }
       },
       {

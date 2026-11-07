@@ -40,6 +40,8 @@ async function onHostReady() {
     labels: collectLabels(key => browser.i18n.getMessage(key)),
   });
   await refresh();
+  // Normally the experiment has hidden the window already, before it was drawn.
+  // This catches the first start after the setting was turned on.
   if (appStartup && settings.startHidden && !startupHandled) {
     await browser.windowTray.hide();
   }
@@ -56,6 +58,7 @@ function applyWindowOptions() {
     enabled: host.ready,
     closeToTray: settings.closeToTray,
     minimizeToTray: settings.minimizeToTray,
+    startHidden: settings.startHidden,
   });
 }
 
