@@ -1,6 +1,6 @@
 [project]
 name = "thunderbird-tray"
-version = "0.1.0"
+version = "0.2.0"
 description = "System tray icon for Thunderbird on Linux: hide to tray, unread count and quick actions"
 readme = "README.md"
 license = "MIT"
