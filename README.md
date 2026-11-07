@@ -37,7 +37,9 @@ the details.
 
 ## Requirements
 
-- Thunderbird 140 or later, from your distribution or from thunderbird.net. Tested with 140 ESR and 158.
+- Thunderbird 140 to 160, from your distribution or from thunderbird.net. Tested with 140 ESR, 158, 159
+  and 160 beta. The add-on reaches into Thunderbird's internals to hide the window, so each new
+  Thunderbird version is tested before the add-on allows it.
   The Flatpak and Snap packages do not let add-ons start programs outside the sandbox, so they cannot
   run the tray program.
 - A desktop with a StatusNotifierItem tray: KDE Plasma (tested with 6.8 on Wayland), or GNOME with the

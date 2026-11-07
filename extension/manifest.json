@@ -2,14 +2,15 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Kemal Aslıyüksek",
   "homepage_url": "https://github.com/kemalasliyuksek/thunderbird-tray",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
       "id": "thunderbird-tray@kemalasliyuksek.com",
-      "strict_min_version": "140.0"
+      "strict_min_version": "140.0",
+      "strict_max_version": "160.*"
     }
   },
   "icons": {

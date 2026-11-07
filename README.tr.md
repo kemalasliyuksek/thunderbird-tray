@@ -38,7 +38,9 @@ yalnızca onları geri getirecek tepsi simgesi varken gizlenir. Ayrıntılar
 
 ## Gereksinimler
 
-- Thunderbird 140 ya da üstü; dağıtımınızın paketi ya da thunderbird.net sürümü. 140 ESR ve 158 ile test edildi.
+- Thunderbird 140 ile 160 arası; dağıtımınızın paketi ya da thunderbird.net sürümü. 140 ESR, 158, 159 ve 160
+  beta ile test edildi. Eklenti pencereyi gizlemek için Thunderbird'ün iç yapısına uzandığından her yeni
+  Thunderbird sürümü test edildikten sonra eklentiye eklenir.
   Flatpak ve Snap paketleri eklentilerin korumalı alan dışında program başlatmasına izin vermediği için
   tepsi programını çalıştıramaz.
 - StatusNotifierItem tepsisi olan bir masaüstü: KDE Plasma (6.8, Wayland üzerinde test edildi), AppIndicator

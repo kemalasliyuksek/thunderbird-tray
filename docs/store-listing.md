@@ -120,5 +120,5 @@ Testing: without the companion program the add-on does nothing visible (its sett
 program is not running). To test fully on Linux: install the wheel from the GitHub release with
 "uv tool install" or "pipx install", run "thunderbird-tray install", restart Thunderbird.
 
-Tested with Thunderbird 140.17.0esr and 158.0 on Fedora 45, KDE Plasma 6.8, Wayland.
+Tested with Thunderbird 140.17.0esr, 158.0, 159.0 and 160.0b5 on Fedora 45, KDE Plasma 6.8, Wayland.
 ```

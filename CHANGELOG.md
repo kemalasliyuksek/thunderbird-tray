@@ -2,6 +2,11 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org/).
 
+## 0.2.1 - 2026-11-07
+
+- Declares the Thunderbird versions it was tested with, 140 to 160, as addons.thunderbird.net requires
+  for add-ons with an Experiment API (`strict_max_version`). Tested with 140 ESR, 158, 159 and 160 beta.
+
 ## 0.2.0 - 2026-11-07
 
 - Renamed to Tray for Thunderbird, as addons.thunderbird.net requires for names that contain

@@ -57,6 +57,21 @@ to `~/.local/state/thunderbird-tray/host.log`.
 The tray icon can be driven without a mouse through D-Bus: `org.kde.StatusNotifierItem.Activate` is a
 left click, and `com.canonical.dbusmenu.Event` with `clicked` picks a menu entry.
 
+## New Thunderbird versions
+
+`strict_max_version` in `extension/manifest.json` is the newest Thunderbird the add-on is tested with;
+addons.thunderbird.net requires it for add-ons with an Experiment API. Thunderbird releases monthly, and
+a beta of the next version is on https://archive.mozilla.org/pub/thunderbird/releases/ about a month
+before. For each new version, with its Linux tarball (check it against `SHA512SUMS`) and a separate
+profile as in "Trying a change":
+
+1. The tray icon appears and counts unread mail; the menu opens a message and the Address Book.
+2. Closing the window hides it; a click on the icon shows it; Quit quits.
+3. With "Start hidden in the tray", the window never appears at startup and Thunderbird finishes
+   starting (the tray icon appears).
+
+Then raise `strict_max_version`, release, and upload the new version.
+
 ## Releases
 
 The version is in `extension/manifest.json`, `package.json`, `host/pyproject.toml` and
