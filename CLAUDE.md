@@ -27,6 +27,8 @@ Check Thunderbird internals against its own sources rather than from memory: unp
 `chrome/messenger/content/messenger/schemas/`.
 
 Try changes in a separate profile as described in `CONTRIBUTING.md`, never in the user's own profile.
+Run Mozilla's tarball builds with their own `HOME` as well (see "New Thunderbird versions" there): they
+create `~/.thunderbird` even with `--profile`, and the user's Thunderbird then opens an empty profile.
 Run Thunderbird and the tray program outside the Claude Code sandbox: GUI programs cannot reach D-Bus or
 the compositor inside it. The tray can be driven through D-Bus (`org.kde.StatusNotifierItem.Activate`,
 `com.canonical.dbusmenu.Event`), and KWin scripts can list or close windows, so tests need no mouse.

@@ -62,8 +62,23 @@ left click, and `com.canonical.dbusmenu.Event` with `clicked` picks a menu entry
 `strict_max_version` in `extension/manifest.json` is the newest Thunderbird the add-on is tested with;
 addons.thunderbird.net requires it for add-ons with an Experiment API. Thunderbird releases monthly, and
 a beta of the next version is on https://archive.mozilla.org/pub/thunderbird/releases/ about a month
-before. For each new version, with its Linux tarball (check it against `SHA512SUMS`) and a separate
-profile as in "Trying a change":
+before. Test each new version with its Linux tarball (check it against `SHA512SUMS`).
+
+Run the tarball with its own home directory, not only its own profile. Even with `--profile`, Mozilla's
+builds create `~/.thunderbird` (crash reports and pending pings), and a distribution's Thunderbird
+prefers `~/.thunderbird` over `~/.config/thunderbird` when it exists: it then starts with a new, empty
+profile, and your mail seems to be gone. Copy the native messaging manifest into the throwaway home so
+that the tray program is found:
+
+```bash
+H=/tmp/tb-home && mkdir -p "$H/.mozilla/native-messaging-hosts" /tmp/tb-dev/extensions
+cp ~/.mozilla/native-messaging-hosts/com.kemalasliyuksek.thunderbird_tray.json "$H/.mozilla/native-messaging-hosts/"
+echo "$PWD/extension" > /tmp/tb-dev/extensions/thunderbird-tray@kemalasliyuksek.com
+echo 'user_pref("extensions.autoDisableScopes", 0);' > /tmp/tb-dev/user.js
+env -u XDG_CONFIG_HOME HOME="$H" ./thunderbird/thunderbird --profile /tmp/tb-dev
+```
+
+Then check:
 
 1. The tray icon appears and counts unread mail; the menu opens a message and the Address Book.
 2. Closing the window hides it; a click on the icon shows it; Quit quits.
