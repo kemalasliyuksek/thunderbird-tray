@@ -10,13 +10,14 @@ step with the README when features change.
 - **Privacy policy:** the full text of [PRIVACY.md](../PRIVACY.md), pasted into the privacy policy field.
   ATN does not accept a link.
 
-## Screenshots
+## Icon and screenshots
 
-Upload in this order, with these captions:
+Made from `extension/icons/icon.svg` and `docs/screenshots/`, on a 1280×800 background as ATN recommends:
 
-1. `docs/screenshots/menu.png`: The tray menu: recent unread messages and quick actions.
-2. `docs/screenshots/tooltip.png`: Unread badge and tooltip with counts per account.
-3. `docs/screenshots/settings.png`: Settings.
+- Icon: `docs/store/icon-64.png`.
+- `docs/store/screenshot-1-tray.png`: The tray menu with recent unread messages and quick actions, and the
+  unread badge with its tooltip.
+- `docs/store/screenshot-2-settings.png`: Settings.
 
 All mail in them is made up; they were taken with a test profile.
 
