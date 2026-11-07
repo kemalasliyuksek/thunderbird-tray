@@ -42,12 +42,13 @@ yalnızca onları geri getirecek tepsi simgesi varken gizlenir. Ayrıntılar
 
 ## Kurulum
 
-1. Tepsi programını kurun ve Thunderbird'e tanıtın:
+1. [Son sürümden](https://github.com/kemalasliyuksek/thunderbird-tray/releases/latest)
+   `thunderbird-tray-<sürüm>.xpi`, `thunderbird_tray-<sürüm>-py3-none-any.whl` ve `SHA256SUMS` dosyalarını
+   indirin; sonra dosyaları doğrulayın, tepsi programını kurun ve Thunderbird'e tanıtın:
 
    ```bash
-   git clone https://github.com/kemalasliyuksek/thunderbird-tray.git
-   cd thunderbird-tray
-   uv tool install ./host        # ya da: pipx install ./host
+   sha256sum --check --ignore-missing SHA256SUMS
+   uv tool install ./thunderbird_tray-<sürüm>-py3-none-any.whl   # ya da: pipx install ./thunderbird_tray-…whl
    thunderbird-tray install
    ```
 
@@ -55,13 +56,7 @@ yalnızca onları geri getirecek tepsi simgesi varken gizlenir. Ayrıntılar
    `~/.mozilla/native-messaging-hosts/com.kemalasliyuksek.thunderbird_tray.json` dosyasını yazar. Programı
    yalnızca bu eklenti başlatabilir.
 
-2. Eklentiyi derleyin ve Thunderbird'e kurun:
-
-   ```bash
-   python3 scripts/build-xpi.py  # dist/thunderbird-tray-<sürüm>.xpi dosyasını yazar
-   ```
-
-   Thunderbird'de **Araçlar › Eklentiler ve Temalar**'ı açın, dişli düğmesine tıklayın, **Dosyadan Eklenti
+2. Eklentiyi Thunderbird'e kurun. Thunderbird'de **Araçlar › Eklentiler ve Temalar**'ı açın, dişli düğmesine tıklayın, **Dosyadan Eklenti
    Yükle…**'yi seçin ve `.xpi` dosyasını gösterin. Thunderbird, eklentinin Thunderbird'e ve bilgisayarınıza
    tam ve sınırsız erişimi olacağı uyarısını gösterir. Bu uyarı, experiment API'si kullanan her eklentide
    çıkar; bu eklentinin pencereyi gizlemek için buna ihtiyacı var. Eklentinin gerçekte ne yaptığı
@@ -70,6 +65,18 @@ yalnızca onları geri getirecek tepsi simgesi varken gizlenir. Ayrıntılar
 3. Thunderbird'ü yeniden başlatın. Simge tepside görünür.
 
 Kurulumu `thunderbird-tray status` denetler.
+
+### Kaynaktan
+
+```bash
+git clone https://github.com/kemalasliyuksek/thunderbird-tray.git
+cd thunderbird-tray
+uv tool install ./host           # ya da: pipx install ./host
+thunderbird-tray install
+python3 scripts/build-xpi.py     # dist/thunderbird-tray-<sürüm>.xpi dosyasını yazar
+```
+
+Sonra `.xpi` dosyasını yukarıdaki 2. adımdaki gibi kurun.
 
 ### Oturum açılınca tepside başlatma
 

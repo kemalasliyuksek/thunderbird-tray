@@ -61,7 +61,18 @@ left click, and `com.canonical.dbusmenu.Event` with `clicked` picks a menu entry
 
 The version is in `extension/manifest.json`, `package.json`, `host/pyproject.toml` and
 `host/src/thunderbird_tray/__init__.py`; a test checks that they agree. Add the changes to
-`CHANGELOG.md`.
+`CHANGELOG.md` with the release date, then build, tag and publish:
+
+```bash
+pnpm test && pnpm build                                  # dist/thunderbird-tray-<version>.xpi
+(cd host && uv run pytest -q && rm -rf dist && uv build) # host/dist/*.whl and *.tar.gz
+mkdir -p release && cp dist/*.xpi host/dist/*.whl host/dist/*.tar.gz release/
+(cd release && sha256sum * > SHA256SUMS)
+git tag -s v<version> -m "Thunderbird Tray <version>" && git push origin v<version>
+gh release create v<version> release/* --title "Thunderbird Tray <version>" --notes-file <notes>
+```
+
+The `.xpi` is reproducible, so anyone can rebuild it from the tag and compare checksums.
 
 ## Commits
 

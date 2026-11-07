@@ -41,12 +41,13 @@ the details.
 
 ## Installation
 
-1. Install the tray program and register it with Thunderbird:
+1. Download `thunderbird-tray-<version>.xpi`, `thunderbird_tray-<version>-py3-none-any.whl` and
+   `SHA256SUMS` from the [latest release](https://github.com/kemalasliyuksek/thunderbird-tray/releases/latest),
+   then check them, install the tray program and register it with Thunderbird:
 
    ```bash
-   git clone https://github.com/kemalasliyuksek/thunderbird-tray.git
-   cd thunderbird-tray
-   uv tool install ./host        # or: pipx install ./host
+   sha256sum --check --ignore-missing SHA256SUMS
+   uv tool install ./thunderbird_tray-<version>-py3-none-any.whl   # or: pipx install ./thunderbird_tray-…whl
    thunderbird-tray install
    ```
 
@@ -54,13 +55,7 @@ the details.
    `~/.mozilla/native-messaging-hosts/com.kemalasliyuksek.thunderbird_tray.json`, which tells Thunderbird
    where the program is. It allows only this add-on to start it.
 
-2. Build the add-on and install it in Thunderbird:
-
-   ```bash
-   python3 scripts/build-xpi.py  # writes dist/thunderbird-tray-<version>.xpi
-   ```
-
-   In Thunderbird, open **Tools › Add-ons and Themes**, click the gear button, choose **Install Add-on
+2. Install the add-on in Thunderbird. Open **Tools › Add-ons and Themes**, click the gear button, choose **Install Add-on
    From File…** and pick the `.xpi` file. Thunderbird warns that the add-on "will have full, unrestricted
    access to Thunderbird, and your computer". It says this for every add-on that uses an experiment API,
    which this one needs to hide the window; what the add-on actually does is described in
@@ -69,6 +64,18 @@ the details.
 3. Restart Thunderbird. The icon appears in the tray.
 
 `thunderbird-tray status` checks the setup.
+
+### From source
+
+```bash
+git clone https://github.com/kemalasliyuksek/thunderbird-tray.git
+cd thunderbird-tray
+uv tool install ./host           # or: pipx install ./host
+thunderbird-tray install
+python3 scripts/build-xpi.py     # writes dist/thunderbird-tray-<version>.xpi
+```
+
+Then install the `.xpi` as in step 2 above.
 
 ### Start in the tray at login
 
